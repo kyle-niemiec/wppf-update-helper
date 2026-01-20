@@ -1,17 +1,28 @@
 <?php
+/**
+ * WPPF Update Helper
+ *
+ * Copyright (c) 2008–2020 DesignInk, LLC
+ * Copyright (c) 2026 Kyle Niemiec
+ *
+ * This file is licensed under the GNU General Public License v3.0.
+ * See the LICENSE file for details.
+ *
+ * @package WPPF\Update_Helper
+ */
 
-namespace Designink\WordPress\Plugin_Update_Helper\v1_0_0;
+namespace WPPF\Update_Helper\v1_0_1;
 
 defined( 'ABSPATH' ) or exit;
 
-use Designink\WordPress\Framework\v1_0_1\Module;
+use WPPF\v1_2_0\Framework\Module;
 
-if ( ! class_exists( 'Designink\WordPress\Plugin_Update_Helper\v1_0_0\Plugin_Helper_Installer_Module', false ) ) {
+if ( ! class_exists( 'WPPF\Update_Helper\v1_0_1\Plugin_Installer_Module', false ) ) {
 
 	/**
 	 * This module is to help the installer process by attaching private tokens to requests and renaming unzipped install locations.
 	 */
-	final class Plugin_Helper_Installer_Module extends Module {
+	final class Plugin_Installer_Module extends Module {
 
 		/**
 		 * Module entry point.
@@ -57,13 +68,13 @@ if ( ! class_exists( 'Designink\WordPress\Plugin_Update_Helper\v1_0_0\Plugin_Hel
 		 * 
 		 * @return mixed The URL expected by the WP_Upgrader when calling download_package. Returning FALSE runs the default WP_Upgrader code.
 		 */
-		final private static function add_access_token_to_download_url( string $package_url ) {
+		private static function add_access_token_to_download_url( string $package_url ) {
 			$current_transient = get_site_transient( 'update_plugins' );
 
 			if ( is_array( $current_transient->response ) ) {
 				foreach ( $current_transient->response as $options ) {
 					if ( isset( $options->token ) && $options->package === $package_url ) {
-						$ssl = Plugin_Helper_Settings_Module::get_ssl_key();
+						$ssl = Settings_Module::get_ssl_key();
 						$token = base64_decode( $options->token );
 						$decode = openssl_decrypt( $token, 'aes-256-cbc', $ssl['key'], OPENSSL_RAW_DATA );
 						$url = add_query_arg( 'access_token', $decode, $package_url );
@@ -92,7 +103,7 @@ if ( ! class_exists( 'Designink\WordPress\Plugin_Update_Helper\v1_0_0\Plugin_Hel
 		 * 
 		 * @return WP_Error|array Return either an error or the results of the install.
 		 */
-		final private static function rename_folder_post_install( array $hook_extra, array $result ) {
+		private static function rename_folder_post_install( array $hook_extra, array $result ) {
 			if ( isset( $hook_extra['plugin'] ) ) {
 				global $wp_filesystem;
 				$plugin_name = $hook_extra['plugin'];
@@ -113,7 +124,7 @@ if ( ! class_exists( 'Designink\WordPress\Plugin_Update_Helper\v1_0_0\Plugin_Hel
 		 * 
 		 * @return false|string The slug found in the plugin name, or FALSE if not found.
 		 */
-		final private static function parse_slug_from_plugin_name( string $name ) {
+		private static function parse_slug_from_plugin_name( string $name ) {
 
 			if ( preg_match( '/^(?:[a-zA-Z0-9-]+)\/([a-zA-Z0-9-]+)\.php$/', $name, $matches ) ) {
 				return $matches[1];

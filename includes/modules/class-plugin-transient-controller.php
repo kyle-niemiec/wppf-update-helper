@@ -1,44 +1,33 @@
 <?php
 /**
- * DesignInk Plugin Update Helper
+ * WPPF Update Helper
  *
- * This source file is subject to the GNU General Public License v3.0
- * that is bundled with this package in the file license.txt.
- * It is also available through the world-wide-web at this URL:
- * http://www.gnu.org/licenses/gpl-3.0.html
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to answers@designdigitalsolutions.com so we can send you a copy immediately.
+ * Copyright (c) 2008–2020 DesignInk, LLC
+ * Copyright (c) 2026 Kyle Niemiec
  *
- * DISCLAIMER
+ * This file is licensed under the GNU General Public License v3.0.
+ * See the LICENSE file for details.
  *
- * Do not edit or add to this file if you wish to upgrade the plugin to newer
- * versions in the future. If you wish to customize the plugin for your
- * needs please refer to https://designinkdigital.com
- *
- * @package   Designink/WordPress/Plugin_Update_Helper
- * @author    DesignInk Digital
- * @copyright Copyright (c) 2008-2020, DesignInk, LLC
- * @license   http://www.gnu.org/licenses/gpl-3.0.html GNU General Public License v3.0
+ * @package WPPF\Update_Helper
  */
 
-namespace Designink\WordPress\Plugin_Update_Helper\v1_0_0;
+namespace WPPF\Update_Helper\v1_0_1;
 
 defined( 'ABSPATH' ) or exit;
 
-use Designink\WordPress\Framework\v1_0_1\Utility;
-use Designink\WordPress\Framework\v1_0_1\Module;
-use Designink\WordPress\Plugin_Update_Helper\v1_0_0\Plugin_Helper_Update_List;
+use WPPF\Update_Helper\v1_0_1\Plugin_Update_List;
+use WPPF\v1_2_0\Framework\Module;
+use WPPF\v1_2_0\Framework\Utility;
 
-if ( ! class_exists( 'Designink\WordPress\Plugin_Update_Helper\v1_0_0\Plugin_Helper_Transient_Controller', false ) ) {
+if ( ! class_exists( 'WPPF\Update_Helper\v1_0_1\Plugin_Transient_Controller', false ) ) {
 
 	/**
 	 * This class controls incoming custom plugin information for plugin transients.
 	 */
-	final class Plugin_Helper_Transient_Controller extends Module {
+	final class Plugin_Transient_Controller extends Module {
 
 		/** @var string The API URL to find plugin transient information at. */
-		const PLUGIN_TRANSIENT_QUERY_PATH = '/wp-json/designink/api/plugin-updates/transients';
+		const PLUGIN_TRANSIENT_QUERY_PATH = '/wp-json/wppf/api/plugin-updates/transients';
 
 		/**
 		 * Module entry point
@@ -68,13 +57,13 @@ if ( ! class_exists( 'Designink\WordPress\Plugin_Update_Helper\v1_0_0\Plugin_Hel
 		 * 
 		 * @return \stdClass The transient object.
 		 */
-		final private static function retrieve_remote_plugin_transient( \stdClass $transient ) {
+		private static function retrieve_remote_plugin_transient( \stdClass $transient ) {
 			$versions = array();
 
 			if ( ! empty( $transient->checked ) ) {
 				$versions = $transient->checked;
 			} else {
-				$plugins = Plugin_Helper_Update_List::get_list();
+				$plugins = Plugin_Update_List::get_list();
 				$versions = self::get_local_plugin_versions( $plugins );
 			}
 
@@ -104,7 +93,7 @@ if ( ! class_exists( 'Designink\WordPress\Plugin_Update_Helper\v1_0_0\Plugin_Hel
 		 * 
 		 * @return array An associative array mapping plugin names with their versions.
 		 */
-		final private static function get_local_plugin_versions( array $plugin_slugs ) {
+		private static function get_local_plugin_versions( array $plugin_slugs ) {
 			$versions = array();
 
 			foreach ( $plugin_slugs as $slug => $url ) {
@@ -121,8 +110,8 @@ if ( ! class_exists( 'Designink\WordPress\Plugin_Update_Helper\v1_0_0\Plugin_Hel
 		 * 
 		 * @return array An associative array mapping the domains which have plugins hosted to all plugins to be checked on that domain.
 		 */
-		final private static function group_custom_plugins_by_domain() {
-			$plugins = Plugin_Helper_Update_List::get_list();
+		private static function group_custom_plugins_by_domain() {
+			$plugins = Plugin_Update_List::get_list();
 			$domain_requests = array();
 
 			foreach ( $plugins as $plugin_slug => $url ) {
@@ -153,7 +142,7 @@ if ( ! class_exists( 'Designink\WordPress\Plugin_Update_Helper\v1_0_0\Plugin_Hel
 		 * 
 		 * @return false|\stdClass Return the remote plugin transient info, or FALSE if failed.
 		 */
-		final private static function get_remote_plugin_transient_info( string $domain, array $plugins ) {
+		private static function get_remote_plugin_transient_info( string $domain, array $plugins ) {
 			$url = sprintf( '%s%s?plugins=%s', $domain, self::PLUGIN_TRANSIENT_QUERY_PATH, implode( ',', $plugins ) );
 			$request = wp_remote_get( $url, array( 'timeout' => 12 ) );
 			$plugin_info = json_decode( wp_remote_retrieve_body( $request ) );

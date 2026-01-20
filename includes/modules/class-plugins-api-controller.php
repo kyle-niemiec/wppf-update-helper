@@ -1,43 +1,32 @@
 <?php
 /**
- * DesignInk Plugin Update Helper
+ * WPPF Update Helper
  *
- * This source file is subject to the GNU General Public License v3.0
- * that is bundled with this package in the file license.txt.
- * It is also available through the world-wide-web at this URL:
- * http://www.gnu.org/licenses/gpl-3.0.html
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to answers@designdigitalsolutions.com so we can send you a copy immediately.
+ * Copyright (c) 2008–2020 DesignInk, LLC
+ * Copyright (c) 2026 Kyle Niemiec
  *
- * DISCLAIMER
+ * This file is licensed under the GNU General Public License v3.0.
+ * See the LICENSE file for details.
  *
- * Do not edit or add to this file if you wish to upgrade the plugin to newer
- * versions in the future. If you wish to customize the plugin for your
- * needs please refer to https://designinkdigital.com
- *
- * @package   Designink/WordPress/Plugin_Update_Helper
- * @author    DesignInk Digital
- * @copyright Copyright (c) 2008-2020, DesignInk, LLC
- * @license   http://www.gnu.org/licenses/gpl-3.0.html GNU General Public License v3.0
+ * @package WPPF\Update_Helper
  */
 
-namespace Designink\WordPress\Plugin_Update_Helper\v1_0_0;
+namespace WPPF\Update_Helper\v1_0_1;
 
 defined( 'ABSPATH' ) or exit;
 
-use Designink\WordPress\Framework\v1_0_1\Utility;
-use Designink\WordPress\Framework\v1_0_1\Module;
+use WPPF\v1_2_0\Framework\Module;
+use WPPF\v1_2_0\Framework\Utility;
 
-if ( ! class_exists( 'Designink\WordPress\Plugin_Update_Helper\v1_0_0\Plugin_Helper_Plugins_Api_Controller', false ) ) {
+if ( ! class_exists( 'WPPF\Update_Helper\v1_0_1\Plugins_Api_Controller', false ) ) {
 
 	/**
-	 * This class controls incoming data for custom plugins api information.
+	 * This class controls incoming data for custom plugins API information.
 	 */
-	final class Plugin_Helper_Plugins_Api_Controller extends Module {
+	final class Plugins_Api_Controller extends Module {
 
 		/** @var string The API URL to find 'plugins_api' information at. */
-		const PLUGINS_API_QUERY_PATH = '/wp-json/designink/api/plugin-updates/plugins-api';
+		const PLUGINS_API_QUERY_PATH = '/wp-json/wppf/api/plugin-updates/plugins-api';
 
 		/**
 		 * Module entry point
@@ -70,9 +59,9 @@ if ( ! class_exists( 'Designink\WordPress\Plugin_Update_Helper\v1_0_0\Plugin_Hel
 		 * 
 		 * @return false|\stdClass Return FALSE to search the WordPress.org API for info, or return an object with plugin info (external property will be marked TRUE).
 		 */
-		final private static function retrieve_plugins_api_info( string $action, \stdClass $args ) {
+		private static function retrieve_plugins_api_info( string $action, \stdClass $args ) {
 			if ( 'plugin_information' === $action ) {
-				$slugs = Plugin_Helper_Update_List::get_list();
+				$slugs = Plugin_Update_List::get_list();
 				$slug = $args->slug;
 
 				if ( key_exists( $slug, $slugs ) ) {
@@ -93,7 +82,7 @@ if ( ! class_exists( 'Designink\WordPress\Plugin_Update_Helper\v1_0_0\Plugin_Hel
 		 * 
 		 * @return false|\stdClass The plugin information or FALSE if not found.
 		 */
-		final private static function get_remote_plugins_api_info( string $domain, string $plugin ) {
+		private static function get_remote_plugins_api_info( string $domain, string $plugin ) {
 			$url = sprintf( '%s%s?plugin=%s', $domain, self::PLUGINS_API_QUERY_PATH, $plugin );
 			$request = wp_remote_get( $url, array( 'timeout' => 12 ) );
 			$plugin_info = json_decode( wp_remote_retrieve_body( $request ) );

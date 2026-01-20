@@ -1,10 +1,10 @@
-# DesignInk Plugin Update Helper
+# WPPF Update Helper
 
-This project is a Composer-distrubuted package designed to integrate a custom WordPress plugin project with the [DesignInk Plugin Update Server](https://github.com/designink-digital/designink-plugin-update-server). It provides the tools used to communicate with a plugin update server and perform information reporting and update installation.
+This project is a Composer-distrubuted package designed to integrate a custom WordPress plugin project with the [WP Plugin Update Server](https://github.com/kyle-niemiec/wp-plugin-update-server). It provides the tools used to communicate with a plugin update server and perform information reporting and update installation.
 
 ## Installation
 
-To install this package into your plugin project, simply navigate to the root directory of your project in a command terminal and run ``composer require designink/plugin-update-helper``. This installs the update helper into the vendor directoy and updates your Composer file.
+To install this package into your plugin project, simply navigate to the root directory of your project in a command terminal and run ``composer require kyle-niemiec/wppf-update-helper``. This installs the update helper into the vendor directoy and updates your Composer file.
 
 ## Usage
 
@@ -17,12 +17,13 @@ To tell the update helper what you plugin slug and update URL are, you simply ne
 ```php
 /* Inside of "plugin-slug/plugin-slug.php" */
 
-use Designink\WordPress\Plugin_Update_Helper\v1_0_0\Plugin_Helper_Update_List;
+use WPPF\Update_Helper\v1_0_1\Plugin_Update_List;
 
 // Include the plugin update helper
-require_once __DIR__ . '/vendor/designink/plugin-update-helper/index.php';
+require_once __DIR__ . '/vendor/kyle-niemiec/wppf-update-helper/index.php';
 
 // Add the slug and URL to the list
-Plugin_Helper_Update_List::add_plugin( 'plugin-slug', 'https://designinkdigital.com/' );
+Plugin_Update_List::add_plugin( 'plugin-slug', 'https://codeflower.io/' );
 ```
-If you plan on using a private GitHub repository, you should provide an SSL key to use to encrypt your API token in "Settings > DesignInk Settings". This token must match the token on the update server.
+
+If you plan on using a private GitHub repository, you should provide an SSL key to use to encrypt your API token in "Settings > WPPF Settings". This token must match the token on the update server.
