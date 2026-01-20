@@ -1,6 +1,6 @@
 <?php return array(
     'root' => array(
-        'name' => 'kyle-niemiec/wppf-plugin-update-helper',
+        'name' => 'kyle-niemiec/wppf-update-helper',
         'pretty_version' => '1.0.1',
         'version' => '1.0.1.0',
         'reference' => null,
@@ -19,7 +19,7 @@
             'aliases' => array(),
             'dev_requirement' => false,
         ),
-        'kyle-niemiec/wppf-plugin-update-helper' => array(
+        'kyle-niemiec/wppf-update-helper' => array(
             'pretty_version' => '1.0.1',
             'version' => '1.0.1.0',
             'reference' => null,
