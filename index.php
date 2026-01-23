@@ -11,7 +11,7 @@
  * @package WPPF\Update_Helper
  */
 
-namespace WPPF\Update_Helper\v1_0_1;
+namespace WPPF\Update_Helper\v1_0_2;
 
 defined( 'ABSPATH' ) or exit;
 
@@ -20,7 +20,7 @@ require_once __DIR__ . '/vendor/kyle-niemiec/wp-plugin-framework/index.php';
 
 use WPPF\v1_2_0\Framework\Module;
 
-if ( ! class_exists( 'WPPF\Update_Helper\v1_0_1\Plugin_Update_Helper', false ) ) {
+if ( ! class_exists( 'WPPF\Update_Helper\v1_0_2\Plugin_Update_Helper', false ) ) {
 
 	/**
 	 * This helper module helps plugins hosted using the WP Plugin Update Server connect and get the latest information about releases from their servers.

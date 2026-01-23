@@ -11,13 +11,13 @@
  * @package WPPF\Update_Helper
  */
 
-namespace WPPF\Update_Helper\v1_0_1;
+namespace WPPF\Update_Helper\v1_0_2;
 
 defined( 'ABSPATH' ) or exit;
 
 use WPPF\v1_2_0\Framework\Module;
 
-if ( ! class_exists( 'WPPF\Update_Helper\v1_0_1\Plugin_Installer_Module', false ) ) {
+if ( ! class_exists( 'WPPF\Update_Helper\v1_0_2\Plugin_Installer_Module', false ) ) {
 
 	/**
 	 * This module is to help the installer process by attaching private tokens to requests and renaming unzipped install locations.

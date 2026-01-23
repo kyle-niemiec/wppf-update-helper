@@ -11,11 +11,11 @@
  * @package WPPF\Update_Helper
  */
 
-namespace WPPF\Update_Helper\v1_0_1;
+namespace WPPF\Update_Helper\v1_0_2;
 
 defined( 'ABSPATH' ) or exit;
 
-if ( ! class_exists( 'WPPF\Update_Helper\v1_0_1\Plugin_Update_List', false ) ) {
+if ( ! class_exists( 'WPPF\Update_Helper\v1_0_2\Plugin_Update_List', false ) ) {
 
 	/**
 	 * A class to control the filter containing the plugins registering to be checked.

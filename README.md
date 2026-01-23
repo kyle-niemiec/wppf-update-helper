@@ -17,7 +17,7 @@ To tell the update helper what you plugin slug and update URL are, you simply ne
 ```php
 /* Inside of "plugin-slug/plugin-slug.php" */
 
-use WPPF\Update_Helper\v1_0_1\Plugin_Update_List;
+use WPPF\Update_Helper\v1_0_2\Plugin_Update_List;
 
 // Include the plugin update helper
 require_once __DIR__ . '/vendor/kyle-niemiec/wppf-update-helper/index.php';

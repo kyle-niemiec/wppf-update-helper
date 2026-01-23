@@ -11,7 +11,7 @@
  * @package WPPF\Update_Helper
  */
 
-namespace WPPF\Update_Helper\v1_0_1;
+namespace WPPF\Update_Helper\v1_0_2;
 
 defined( 'ABSPATH' ) or exit;
 
@@ -19,7 +19,7 @@ use WPPF\v1_2_0\Admin\Screens\WPPF_Settings_Page;
 use WPPF\v1_2_0\Framework\Module;
 use WPPF\v1_2_0\WordPress\Admin\Pages\Settings_Section;
 
-if ( ! class_exists( 'WPPF\Update_Helper\v1_0_1\Settings_Module', false ) ) {
+if ( ! class_exists( 'WPPF\Update_Helper\v1_0_2\Settings_Module', false ) ) {
 
 	/**
 	 * The module controls the loading of the SSL settings into the WPPF settings page.

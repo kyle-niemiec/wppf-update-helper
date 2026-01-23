@@ -11,14 +11,14 @@
  * @package WPPF\Update_Helper
  */
 
-namespace WPPF\Update_Helper\v1_0_1;
+namespace WPPF\Update_Helper\v1_0_2;
 
 defined( 'ABSPATH' ) or exit;
 
 use WPPF\v1_2_0\Framework\Module;
 use WPPF\v1_2_0\Framework\Utility;
 
-if ( ! class_exists( 'WPPF\Update_Helper\v1_0_1\Plugins_Api_Controller', false ) ) {
+if ( ! class_exists( 'WPPF\Update_Helper\v1_0_2\Plugins_Api_Controller', false ) ) {
 
 	/**
 	 * This class controls incoming data for custom plugins API information.

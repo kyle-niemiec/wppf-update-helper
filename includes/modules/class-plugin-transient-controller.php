@@ -11,15 +11,15 @@
  * @package WPPF\Update_Helper
  */
 
-namespace WPPF\Update_Helper\v1_0_1;
+namespace WPPF\Update_Helper\v1_0_2;
 
 defined( 'ABSPATH' ) or exit;
 
-use WPPF\Update_Helper\v1_0_1\Plugin_Update_List;
+use WPPF\Update_Helper\v1_0_2\Plugin_Update_List;
 use WPPF\v1_2_0\Framework\Module;
 use WPPF\v1_2_0\Framework\Utility;
 
-if ( ! class_exists( 'WPPF\Update_Helper\v1_0_1\Plugin_Transient_Controller', false ) ) {
+if ( ! class_exists( 'WPPF\Update_Helper\v1_0_2\Plugin_Transient_Controller', false ) ) {
 
 	/**
 	 * This class controls incoming custom plugin information for plugin transients.
