@@ -16,8 +16,8 @@ namespace WPPF\Update_Helper\v1_0_2;
 defined( 'ABSPATH' ) or exit;
 
 use WPPF\Update_Helper\v1_0_2\Plugin_Update_List;
-use WPPF\v1_2_0\Framework\Module;
-use WPPF\v1_2_0\Framework\Utility;
+use WPPF\v1_2_1\Framework\Module;
+use WPPF\v1_2_1\Framework\Utility;
 
 if ( ! class_exists( 'WPPF\Update_Helper\v1_0_2\Plugin_Transient_Controller', false ) ) {
 

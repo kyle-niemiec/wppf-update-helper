@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "21e73bac314d306c43a9f6d28601c225",
+    "content-hash": "ddbcef914fcd4db7561886b4aee98f72",
     "packages": [
         {
             "name": "kyle-niemiec/wp-plugin-framework",
-            "version": "1.2.0",
+            "version": "1.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kyle-niemiec/wp-plugin-framework.git",
-                "reference": "c1da3a141ec0a94dc305733d788c4a7a52e45f9c"
+                "reference": "adbf046d9df2cc83d41070ecb6ac4794c7831684"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kyle-niemiec/wp-plugin-framework/zipball/c1da3a141ec0a94dc305733d788c4a7a52e45f9c",
-                "reference": "c1da3a141ec0a94dc305733d788c4a7a52e45f9c",
+                "url": "https://api.github.com/repos/kyle-niemiec/wp-plugin-framework/zipball/adbf046d9df2cc83d41070ecb6ac4794c7831684",
+                "reference": "adbf046d9df2cc83d41070ecb6ac4794c7831684",
                 "shasum": ""
             },
             "require-dev": {
@@ -45,9 +45,9 @@
             ],
             "description": "My framework for facilitating WordPress plugin development.",
             "support": {
-                "source": "https://github.com/kyle-niemiec/wp-plugin-framework/tree/v1.2.0"
+                "source": "https://github.com/kyle-niemiec/wp-plugin-framework/tree/v1.2.1"
             },
-            "time": "2026-01-21T22:52:33+00:00"
+            "time": "2026-01-24T11:14:34+00:00"
         }
     ],
     "packages-dev": [],

@@ -15,7 +15,7 @@ namespace WPPF\Update_Helper\v1_0_2;
 
 defined( 'ABSPATH' ) or exit;
 
-use WPPF\v1_2_0\Framework\Module;
+use WPPF\v1_2_1\Framework\Module;
 
 if ( ! class_exists( 'WPPF\Update_Helper\v1_0_2\Plugin_Installer_Module', false ) ) {
 

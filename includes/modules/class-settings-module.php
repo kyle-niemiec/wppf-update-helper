@@ -15,9 +15,9 @@ namespace WPPF\Update_Helper\v1_0_2;
 
 defined( 'ABSPATH' ) or exit;
 
-use WPPF\v1_2_0\Admin\Screens\WPPF_Settings_Page;
-use WPPF\v1_2_0\Framework\Module;
-use WPPF\v1_2_0\WordPress\Admin\Pages\Settings_Section;
+use WPPF\v1_2_1\Admin\Screens\WPPF_Settings_Page;
+use WPPF\v1_2_1\Framework\Module;
+use WPPF\v1_2_1\WordPress\Admin\Pages\Settings_Section;
 
 if ( ! class_exists( 'WPPF\Update_Helper\v1_0_2\Settings_Module', false ) ) {
 
