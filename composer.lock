@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kyle-niemiec/wp-plugin-framework.git",
-                "reference": "feeda54b987112ff55c2742c056957070be401f4"
+                "reference": "8b0a9eed82a3834961c1d9d2cd276ce86215f186"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kyle-niemiec/wp-plugin-framework/zipball/feeda54b987112ff55c2742c056957070be401f4",
-                "reference": "feeda54b987112ff55c2742c056957070be401f4",
+                "url": "https://api.github.com/repos/kyle-niemiec/wp-plugin-framework/zipball/8b0a9eed82a3834961c1d9d2cd276ce86215f186",
+                "reference": "8b0a9eed82a3834961c1d9d2cd276ce86215f186",
                 "shasum": ""
             },
             "require-dev": {
@@ -47,7 +47,7 @@
             "support": {
                 "source": "https://github.com/kyle-niemiec/wp-plugin-framework/tree/v1.2.1"
             },
-            "time": "2026-01-25T07:55:28+00:00"
+            "time": "2026-01-25T11:22:05+00:00"
         }
     ],
     "packages-dev": [],
